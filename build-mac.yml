@@ -1,0 +1,15 @@
+name: Fabriquer l'application Mac
+on:
+  push:
+  workflow_dispatch:
+jobs:
+  build:
+    runs-on: macos-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Compiler et creer le DMG
+        run: bash build-mac.sh
+      - uses: actions/upload-artifact@v4
+        with:
+          name: Minuteur-visuel-Mac
+          path: Minuteur-visuel.dmg

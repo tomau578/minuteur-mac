@@ -1,0 +1,39 @@
+MINUTEUR VISUEL POUR MAC - COMMENT FABRIQUER L'APPLICATION
+
+Ce dossier contient le code de l'application Mac (Swift, aucun Python necessaire).
+Il faut le "compiler" une seule fois pour obtenir un fichier unique, Minuteur-visuel.dmg, a diffuser.
+Deux methodes, au choix.
+
+=== METHODE A : SANS MAC, avec GitHub (gratuit) ===
+1. Creez un compte gratuit sur https://github.com (si vous n'en avez pas).
+2. Cliquez sur "+" puis "New repository". Nom : minuteur-mac. Laissez "Public" (compilations gratuites illimitees). Cliquez "Create repository".
+3. Sur la page du depot, cliquez sur "uploading an existing file" (ou Add file > Upload files).
+4. Decompressez ce zip sur votre PC, puis glissez TOUT son contenu dans la page : main.swift, Info.plist, minuteur.icns, build-mac.sh ET le dossier .github
+   (ce dossier commence par un point ; s'il n'est pas pris en compte, voir la note ci-dessous).
+5. Cliquez "Commit changes" en bas de page.
+6. Ouvrez l'onglet "Actions" : la fabrication demarre toute seule (pastille jaune, puis verte au bout de 2 a 3 minutes).
+7. Cliquez sur l'execution terminee, descendez jusqu'a la rubrique "Artifacts" et telechargez "Minuteur-visuel-Mac" : c'est un zip contenant Minuteur-visuel.dmg.
+   C'est ce fichier .dmg que vous diffusez aux utilisateurs de Mac.
+
+Note : si le dossier .github n'a pas ete envoye, dans le depot cliquez sur Add file > Create new file, tapez comme nom
+   .github/workflows/build-mac.yml
+puis copiez-y le contenu du fichier build-mac.yml de ce zip, et validez ("Commit changes").
+Si la fabrication echoue (pastille rouge), cliquez dessus et envoyez-moi les lignes d'erreur en rouge.
+
+=== METHODE B : avec un Mac ===
+1. Ouvrez l'application Terminal.
+2. Installez les outils de base d'Apple (une seule fois) : tapez  xcode-select --install  et suivez les etapes.
+3. Tapez  cd  suivi d'un espace, glissez le dossier decompresse dans la fenetre, appuyez sur Entree.
+4. Tapez  bash build-mac.sh  : le fichier Minuteur-visuel.dmg apparait dans le dossier.
+
+=== POUR L'UTILISATEUR FINAL (Mac, macOS 11 ou plus recent) ===
+1. Double-cliquez sur Minuteur-visuel.dmg, puis glissez "Minuteur visuel" sur le dossier Applications.
+2. Ouvrez "Minuteur visuel" depuis le dossier Applications. Le disque apparait au premier plan, sans icone dans le Dock.
+3. Premiere ouverture : l'application n'est pas signee par Apple (cela coute un abonnement de developpeur), macOS la bloque donc au premier lancement.
+   - macOS 15 (Sequoia) : cliquez sur "Terminé", ouvrez Reglages Systeme > Confidentialite et securite, descendez jusqu'a
+     "Minuteur visuel a ete bloque" et cliquez "Ouvrir quand meme", puis confirmez avec votre mot de passe.
+   - macOS 14 et plus ancien : clic droit (ou Ctrl + clic) sur l'application > Ouvrir > Ouvrir.
+   Cette etape n'est necessaire qu'une seule fois.
+4. Utilisation : clic = demarrer/pause ; clic maintenu + glisser = deplacer ; clic droit = reglages (duree, taille, couleurs,
+   "Lancer au demarrage du Mac", Quitter). Trois boutons apparaissent au survol : remise a zero, reglages, quitter.
+   Pour le lancement au demarrage, l'application doit etre dans le dossier Applications.
